@@ -55,6 +55,25 @@ console.log(book1.changeVersion())
 // 闭包实现
 var Bookies = (function () {
     var bookNum = 0;
+    var maxNum = 10;
+
+    function _bookies(id, name, price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+
+        if (+bookNum > maxNum) {
+            throw new Error('We only publish no more than ' + maxNum + ' bookies!');
+        }
+
+        // 构造器
+        this.setName(name);
+        this.setPrice(price);
+    }
+
+    _bookies.prototype = {
+
+    }
 
 })();
 
