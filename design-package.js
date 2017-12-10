@@ -51,3 +51,65 @@ console.log(book1.chechId(1))
 console.log(book1.showPrice())
 console.log(book1.changeVersion())
 
+
+// 闭包实现
+var Bookies = (function () {
+    var bookNum = 0;
+    var maxNum = 10;
+
+    function _bookies(id, name, price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+
+        if (+bookNum > maxNum) {
+            throw new Error('We only publish no more than ' + maxNum + ' bookies!');
+        }
+
+        // 构造器
+        this.setName(name);
+        this.setPrice(price);
+    }
+
+    _bookies.prototype = {
+
+    }
+
+})();
+
+
+/**
+ * 不安全的创建对象的模式
+ */
+var Person = function (name, age, sex) {
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+}
+
+// 不安全模式：遗漏了 new 关键字，结果出问题了！
+var person1 = Person('Xiaoming', 23, 'man');
+console.log(person1)  // undefined
+console.log(window.name) // 'Xiaoming'
+
+var person2 = new Person('Jackson', 13, 'woman');
+console.log(person2.name)  // 'Jackson'
+console.log(window.name) // 'Xiaoming'
+
+/**
+ * 创建对象的安全模式
+ */
+var Person = function (name, age, sex) {
+    if (!(this instanceof Person)) { // 若 this 不为 Person 实例则返回一个 new 对象
+        return new Person(name, age, sex);
+    }
+
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+}
+
+// 不安全模式：遗漏了 new 关键字，也没有问题了！
+var person1 = Person('Xiaoming', 23, 'man');
+console.log(person1)  // undefined
+console.log(window.name) // 'Xiaoming'

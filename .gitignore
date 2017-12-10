@@ -1,0 +1,14 @@
+node_modules
+.DS_Store
+npm-debug.log
+.*.swp
+.*.swo
+output
+dist
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+*/.DS_Store
+externals
+.editorconfig
