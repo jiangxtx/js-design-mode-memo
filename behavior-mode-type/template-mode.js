@@ -79,6 +79,10 @@ Alert.prototype = {
  * 基于上述的基类，可以创建子模板类
  * @constructor
  */
-var RightAlert = function () {
-
+var RightAlert = function (data) {
+  Alert.call(this, data); // 继承构造函数
+  this.confirmBtn.className = this.confirmBtn.className + ' right';
 }
+
+// 继承基类提示方法
+RightAlert.prototype = new Alert();
