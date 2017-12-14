@@ -79,10 +79,24 @@ Alert.prototype = {
  * 基于上述的基类，可以创建子模板类
  * @constructor
  */
+
+// 右侧按钮提示框
 var RightAlert = function (data) {
   Alert.call(this, data); // 继承构造函数
   this.confirmBtn.className = this.confirmBtn.className + ' right';
 }
+RightAlert.prototype = new Alert(); // 继承基类提示方法
 
-// 继承基类提示方法
-RightAlert.prototype = new Alert();
+// 标题提示框
+var TitleAlert = function (data) {
+  Alert.call(this, data)
+  this.title = data.title;
+  this.titleNode = document.createElement('h3');  // 创建标题组件
+  this.titleNode.innerHTML = this.title;
+}
+TitleAlert.prototype = new Alert();
+TitleAlert.prototype.init = function () {
+  // 插入标题
+  this.panel.insertBefore(this.titleNode, this.panel.firstChild);
+  Alert.prototype.init.call(this);  // 继承基类 init 方法.
+}
