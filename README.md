@@ -9,5 +9,6 @@
 ### strcuture-mode-type
 结构型设计模式
 
+## design mode
 
 —— jiangxtx 2017-12-10
