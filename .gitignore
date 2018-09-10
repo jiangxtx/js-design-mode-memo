@@ -6,6 +6,7 @@ npm-debug.log
 output
 dist
 .idea
+.idea/workspace.xml
 .vscode
 *.sublime-project
 *.sublime-workspace
